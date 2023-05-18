@@ -2,13 +2,9 @@ const saveData = (tasks) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-const loadData = (initial) => {
+const loadData = () => {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-    if (tasks) {
-      tasks.forEach((task) => {
-        initial.push(task);
-      });
-    }
+  return tasks ? tasks : [];
 };
 
 export { saveData, loadData };

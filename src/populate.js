@@ -3,14 +3,14 @@ import deleteAllComplete from './modules/delete-complete-tasks.js';
 import {
   createCheckbox, createDescription, createDelete, createDrag,
 } from './liItem.js';
-import { saveData, loadData } from './saveData.js';
+import { saveData } from './saveData.js';
 
 const list = document.getElementById('list');
 
 class TaskList extends Array {
   constructor() {
     super();
-    loadData(this);
+    this.loadTasksFromLocalStorage();
   }
 
   render() {
@@ -39,7 +39,7 @@ class TaskList extends Array {
         saveData(this);
       });
       checkbox.addEventListener('change', () => {
-        toggleCompleted(task);
+        this.toggleCompleted(i);
         saveData(this);
       });
     });
@@ -59,11 +59,21 @@ class TaskList extends Array {
     this.render();
   }
 
-  //toggleCompleted(index) {
-  //  const task = this[index];
-   // toggleCompleted(task);
-   // saveData(this);
-  //}
+  loadTasksFromLocalStorage() {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    if (tasks) {
+      tasks.forEach((task) => {
+        this.push(task);
+      });
+      this.render();
+    }
+  }
+
+  toggleCompleted(index) {
+    const task = this[index];
+    toggleCompleted(task);
+    saveData(this);
+  }
 
   deleteCompletedTasks() {
     deleteAllComplete(this);
