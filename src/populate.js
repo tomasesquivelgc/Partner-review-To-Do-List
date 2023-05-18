@@ -2,6 +2,7 @@ import dragIcon from './images/drag_icon.svg';
 import deleteIcon from './images/delete.svg';
 import toggleCompleted from './complete-task.js';
 import deleteAllComplete from './modules/delete-complete-tasks.js';
+import { createCheckbox, createDescription } from './liItem';
 
 const list = document.getElementById('list');
 
@@ -14,26 +15,18 @@ class TaskList extends Array {
   render() {
     list.innerHTML = '';
     this.sort((a, b) => a.index - b.index);
-    for (let i = 0; i < this.length; i += 1) {
-      // create li element
-      const newLi = document.createElement('li');
-      // create neccesary items
-      // checkbox
-      const checkboxDescriptionDiv = document.createElement('div');
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.classList.add('change');
-      if (this[i].completed === true) {
-        checkbox.checked = true;
-      }
-      // task description
-      const description = document.createElement('input');
-      description.type = 'text';
-      description.value = this[i].description;
-      description.classList.add('taskDescription');
-      // images
+    this.forEach((task, i) => {
+    const newLi = document.createElement('li');
+    const checkbox = createCheckbox(task);
+    const description = createDescription(task);
+    const checkboxDescriptionDiv = document.createElement('div'); 
+    
+
+
       const dragIconImg = new Image();
       dragIconImg.src = dragIcon;
+
+
       const deleteIconImg = new Image();
       deleteIconImg.src = deleteIcon;
       deleteIconImg.classList.add('deleteBtnn');
@@ -47,22 +40,22 @@ class TaskList extends Array {
       newLi.appendChild(deleteIconImg);
       newLi.appendChild(dragIconImg);
       list.appendChild(newLi);
-
+    
       deleteIconImg.addEventListener('click', () => {
         this.removeTask(i);
       });
-
+    
       description.addEventListener('change', (event) => {
         const newDescription = event.target.value;
-        this[i].description = newDescription;
+        task.description = newDescription;
         this.saveTasksToLocalStorage();
       });
-
+    
       checkbox.addEventListener('change', () => {
         this.toggleCompleted(i);
         this.saveTasksToLocalStorage();
       });
-    }
+    });
     this.saveTasksToLocalStorage();
   }
 
@@ -73,9 +66,9 @@ class TaskList extends Array {
 
   removeTask(position) {
     this.splice(position, 1);
-    for (let i = 0; i < this.length; i += 1) {
-      this[i].index = i + 1;
-    }
+    this.forEach((task, i) => {
+      task.index = i+1;
+    })
     this.render();
   }
 
