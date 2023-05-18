@@ -25,11 +25,13 @@ const createDelete=(i)=>{
   deleteIconImg.src = deleteIcon;
   deleteIconImg.classList.add('deleteBtnn');
   deleteIconImg.setAttribute('data-id', i);
+  return deleteIconImg;
 }
 
 const createDrag =() => {
   const dragIconImg = new Image();
   dragIconImg.src = dragIcon;
+  return dragIconImg;
 }
 
-export {createCheckbox, createDescription};
+export {createCheckbox, createDescription, createDelete, createDrag};

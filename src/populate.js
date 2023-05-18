@@ -1,8 +1,6 @@
-import dragIcon from './images/drag_icon.svg';
-import deleteIcon from './images/delete.svg';
 import toggleCompleted from './complete-task.js';
 import deleteAllComplete from './modules/delete-complete-tasks.js';
-import { createCheckbox, createDescription } from './liItem';
+import { createCheckbox, createDescription, createDelete, createDrag } from './liItem';
 
 const list = document.getElementById('list');
 
@@ -20,37 +18,23 @@ class TaskList extends Array {
     const checkbox = createCheckbox(task);
     const description = createDescription(task);
     const checkboxDescriptionDiv = document.createElement('div'); 
-    
-
-
-      const dragIconImg = new Image();
-      dragIconImg.src = dragIcon;
-
-
-      const deleteIconImg = new Image();
-      deleteIconImg.src = deleteIcon;
-      deleteIconImg.classList.add('deleteBtnn');
-      deleteIconImg.setAttribute('data-id', i);
-      // checkboxDescription attach
-      checkboxDescriptionDiv.appendChild(checkbox);
-      checkboxDescriptionDiv.appendChild(description);
-      checkboxDescriptionDiv.classList.add('checkboxDescription');
-      // append the items to the li and provide functionality
-      newLi.appendChild(checkboxDescriptionDiv);
-      newLi.appendChild(deleteIconImg);
-      newLi.appendChild(dragIconImg);
-      list.appendChild(newLi);
-    
+    const dragIconImg = createDrag();
+    const deleteIconImg = createDelete(i);
+    checkboxDescriptionDiv.appendChild(checkbox);
+    checkboxDescriptionDiv.appendChild(description);
+    checkboxDescriptionDiv.classList.add('checkboxDescription');
+    newLi.appendChild(checkboxDescriptionDiv);
+    newLi.appendChild(deleteIconImg);
+    newLi.appendChild(dragIconImg);
+    list.appendChild(newLi);
       deleteIconImg.addEventListener('click', () => {
         this.removeTask(i);
       });
-    
       description.addEventListener('change', (event) => {
         const newDescription = event.target.value;
         task.description = newDescription;
         this.saveTasksToLocalStorage();
       });
-    
       checkbox.addEventListener('change', () => {
         this.toggleCompleted(i);
         this.saveTasksToLocalStorage();
