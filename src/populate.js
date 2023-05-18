@@ -1,11 +1,10 @@
-import deleteAllComplete from './modules/delete-complete-tasks.js';
+import deleteAllCompleted from './delete-completed-tasks.js';
 import {
   createCompleteLi
 } from './liItem.js';
 import { saveData} from './saveData.js';
-import { removeTask } from './removeTask.js';
 
-const list = document.getElementById('list');
+
 
 class TaskList extends Array {
   constructor() {
@@ -29,7 +28,7 @@ class TaskList extends Array {
   }
 
   deleteCompletedTasks() {
-    deleteAllComplete(this);
+    deleteAllCompleted(this);
     this.render();
   }
 }
