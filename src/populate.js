@@ -4,7 +4,6 @@ import {
   createCheckbox, createDescription, createDelete, createDrag,
 } from './liItem.js';
 import { saveData, loadData } from './saveData.js';
-import { removeTask } from './removeTask.js';
 
 const list = document.getElementById('list');
 
@@ -32,8 +31,7 @@ class TaskList extends Array {
       newLi.appendChild(dragIconImg);
       list.appendChild(newLi);
       deleteIconImg.addEventListener('click', () => {
-        removeTask(this, i);
-        saveData(this)
+        this.removeTask(i);
       });
       description.addEventListener('change', (event) => {
         const newDescription = event.target.value;
@@ -52,6 +50,20 @@ class TaskList extends Array {
     this.push(task);
     this.render();
   }
+
+  removeTask(position) {
+    this.splice(position, 1);
+    this.forEach((task, i) => {
+      task.index = i + 1;
+    });
+    this.render();
+  }
+
+  //toggleCompleted(index) {
+  //  const task = this[index];
+   // toggleCompleted(task);
+   // saveData(this);
+  //}
 
   deleteCompletedTasks() {
     deleteAllComplete(this);
