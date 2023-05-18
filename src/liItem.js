@@ -1,5 +1,9 @@
 import dragIcon from './images/drag_icon.svg';
 import deleteIcon from './images/delete.svg';
+import { saveData } from './saveData.js';
+import { removeTask } from './removeTask.js';
+
+const list = document.getElementById('list');
 
 const createCheckbox = (task) => {
   const checkbox = document.createElement('input');
@@ -33,6 +37,36 @@ const createDrag = () => {
   return dragIconImg;
 };
 
+const createCompleteLi = (task, i, initial) => {
+  const newLi = document.createElement('li');
+  const checkbox = createCheckbox(task);
+  const description = createDescription(task);
+  const checkboxDescriptionDiv = document.createElement('div');
+  const dragIconImg = createDrag();
+  const deleteIconImg = createDelete(i);
+  checkboxDescriptionDiv.appendChild(checkbox);
+  checkboxDescriptionDiv.appendChild(description);
+  checkboxDescriptionDiv.classList.add('checkboxDescription');
+  checkbox.checked = task.completed;
+  newLi.appendChild(checkboxDescriptionDiv);
+  newLi.appendChild(deleteIconImg);
+  newLi.appendChild(dragIconImg);
+  list.appendChild(newLi);
+  deleteIconImg.addEventListener('click', () => {
+    removeTask(initial, i);
+    saveData(initial)
+  });
+  description.addEventListener('change', (event) => {
+    const newDescription = event.target.value;
+    task.description = newDescription;
+    saveData(initial);
+  });
+  checkbox.addEventListener('change', () => {
+    task.completed = !task.completed;
+    saveData(initial);
+  });
+}
+
 export {
-  createCheckbox, createDescription, createDelete, createDrag,
+  createCompleteLi
 };
