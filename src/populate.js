@@ -1,9 +1,8 @@
-import toggleCompleted from './complete-task.js';
 import deleteAllComplete from './modules/delete-complete-tasks.js';
 import {
   createCheckbox, createDescription, createDelete, createDrag,
 } from './liItem.js';
-import { saveData, loadData } from './saveData.js';
+import { saveData} from './saveData.js';
 import { removeTask } from './removeTask.js';
 
 const list = document.getElementById('list');
@@ -11,7 +10,8 @@ const list = document.getElementById('list');
 class TaskList extends Array {
   constructor() {
     super();
-    loadData(this);
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    this.push(...tasks);
   }
 
   render() {
@@ -27,6 +27,7 @@ class TaskList extends Array {
       checkboxDescriptionDiv.appendChild(checkbox);
       checkboxDescriptionDiv.appendChild(description);
       checkboxDescriptionDiv.classList.add('checkboxDescription');
+      checkbox.checked = task.completed;
       newLi.appendChild(checkboxDescriptionDiv);
       newLi.appendChild(deleteIconImg);
       newLi.appendChild(dragIconImg);
@@ -41,7 +42,7 @@ class TaskList extends Array {
         saveData(this);
       });
       checkbox.addEventListener('change', () => {
-        toggleCompleted(i);
+        task.completed = !task.completed;
         saveData(this);
       });
     });
