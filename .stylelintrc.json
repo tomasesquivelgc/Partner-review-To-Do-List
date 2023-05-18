@@ -15,7 +15,7 @@
       }
     ],
     "csstree/validator": true,
-    "import/prefer-default-export": "off"
+
   },
   "ignoreFiles": ["build/**", "dist/**", "**/reset*.css", "**/bootstrap*.css", "**/*.js", "**/*.jsx"]
 }
