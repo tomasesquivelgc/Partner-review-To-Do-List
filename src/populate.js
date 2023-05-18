@@ -1,6 +1,8 @@
 import toggleCompleted from './complete-task.js';
 import deleteAllComplete from './modules/delete-complete-tasks.js';
-import { createCheckbox, createDescription, createDelete, createDrag } from './liItem';
+import {
+  createCheckbox, createDescription, createDelete, createDrag,
+} from './liItem.js';
 
 const list = document.getElementById('list');
 
@@ -14,19 +16,19 @@ class TaskList extends Array {
     list.innerHTML = '';
     this.sort((a, b) => a.index - b.index);
     this.forEach((task, i) => {
-    const newLi = document.createElement('li');
-    const checkbox = createCheckbox(task);
-    const description = createDescription(task);
-    const checkboxDescriptionDiv = document.createElement('div'); 
-    const dragIconImg = createDrag();
-    const deleteIconImg = createDelete(i);
-    checkboxDescriptionDiv.appendChild(checkbox);
-    checkboxDescriptionDiv.appendChild(description);
-    checkboxDescriptionDiv.classList.add('checkboxDescription');
-    newLi.appendChild(checkboxDescriptionDiv);
-    newLi.appendChild(deleteIconImg);
-    newLi.appendChild(dragIconImg);
-    list.appendChild(newLi);
+      const newLi = document.createElement('li');
+      const checkbox = createCheckbox(task);
+      const description = createDescription(task);
+      const checkboxDescriptionDiv = document.createElement('div');
+      const dragIconImg = createDrag();
+      const deleteIconImg = createDelete(i);
+      checkboxDescriptionDiv.appendChild(checkbox);
+      checkboxDescriptionDiv.appendChild(description);
+      checkboxDescriptionDiv.classList.add('checkboxDescription');
+      newLi.appendChild(checkboxDescriptionDiv);
+      newLi.appendChild(deleteIconImg);
+      newLi.appendChild(dragIconImg);
+      list.appendChild(newLi);
       deleteIconImg.addEventListener('click', () => {
         this.removeTask(i);
       });
@@ -51,8 +53,8 @@ class TaskList extends Array {
   removeTask(position) {
     this.splice(position, 1);
     this.forEach((task, i) => {
-      task.index = i+1;
-    })
+      task.index = i + 1;
+    });
     this.render();
   }
 

@@ -1,7 +1,7 @@
 import dragIcon from './images/drag_icon.svg';
 import deleteIcon from './images/delete.svg';
 
-const createCheckbox =(task) => {
+const createCheckbox = (task) => {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('change');
@@ -9,7 +9,7 @@ const createCheckbox =(task) => {
     checkbox.checked = true;
   }
   return checkbox;
-}
+};
 
 const createDescription = (task) => {
   const description = document.createElement('input');
@@ -17,21 +17,22 @@ const createDescription = (task) => {
   description.value = task.description;
   description.classList.add('taskDescription');
   return description;
-}
+};
 
-
-const createDelete=(i)=>{
+const createDelete = (i) => {
   const deleteIconImg = new Image();
   deleteIconImg.src = deleteIcon;
   deleteIconImg.classList.add('deleteBtnn');
   deleteIconImg.setAttribute('data-id', i);
   return deleteIconImg;
-}
+};
 
-const createDrag =() => {
+const createDrag = () => {
   const dragIconImg = new Image();
   dragIconImg.src = dragIcon;
   return dragIconImg;
-}
+};
 
-export {createCheckbox, createDescription, createDelete, createDrag};
+export {
+  createCheckbox, createDescription, createDelete, createDrag,
+};
