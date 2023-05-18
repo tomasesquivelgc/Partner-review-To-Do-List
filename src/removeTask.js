@@ -4,6 +4,6 @@ const removeTask = (task, position) => {
     element.index = j + 1;
   });
   task.render();
-}
+};
 
-export {removeTask}
+export default removeTask;

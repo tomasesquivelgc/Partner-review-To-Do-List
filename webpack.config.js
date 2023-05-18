@@ -8,7 +8,6 @@ module.exports = {
     Task: './src/Task.js',
     populate: './src/populate.js',
 
-
   },
   devtool: 'inline-source-map',
   devServer: {

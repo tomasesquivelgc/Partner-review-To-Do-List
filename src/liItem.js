@@ -1,7 +1,7 @@
 import dragIcon from './images/drag_icon.svg';
 import deleteIcon from './images/delete.svg';
 import { saveData } from './saveData.js';
-import { removeTask } from './removeTask.js';
+import removeTask from './removeTask.js';
 
 const list = document.getElementById('list');
 
@@ -54,7 +54,7 @@ const createCompleteLi = (task, i, initial) => {
   list.appendChild(newLi);
   deleteIconImg.addEventListener('click', () => {
     removeTask(initial, i);
-    saveData(initial)
+    saveData(initial);
   });
   description.addEventListener('change', (event) => {
     const newDescription = event.target.value;
@@ -65,8 +65,6 @@ const createCompleteLi = (task, i, initial) => {
     task.completed = !task.completed;
     saveData(initial);
   });
-}
-
-export {
-  createCompleteLi
 };
+
+export default createCompleteLi;
