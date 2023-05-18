@@ -1,6 +1,6 @@
 import deleteAllCompleted from './delete-completed-tasks.js';
 import createCompleteLi from './liItem.js';
-import {saveData} from './saveData.js';
+import { saveData } from './saveData.js';
 
 const list = document.getElementById('list');
 class TaskList extends Array {
