@@ -8,7 +8,7 @@ const deleteAllCompleted = (task) => {
 const addNewTask = (description, newList) => {
       if (description !== '') {
         const task = new Task(description, false, newList.length + 1);
-        newList.addTask(task);
+        newList.push(task);
       }
 }
 

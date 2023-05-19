@@ -8,6 +8,7 @@ const eventListeners = (newList) => {
       const description = newChore.value.trim();
       addNewTask(description, newList);
       newChore.value = '';
+      newList.render();
     }
   });
   

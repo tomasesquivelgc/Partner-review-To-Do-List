@@ -1,4 +1,7 @@
+import Task from "./Task";
 import { addNewTask, deleteAllCompleted } from "./addDelete";
+jest.mock('./Task');
+
 
 // Mock localStorage
 const localStorageMock = {
@@ -46,3 +49,27 @@ describe('deleteAllCompleted', () => {
   });
   
 });
+describe('addTask', () => {
+  test('should return nothing if string is empty', () => {
+    //Arrange
+    const mockTasks = [];
+
+    //Act
+    addNewTask('', mockTasks);
+
+    //Assert
+    expect(mockTasks).toEqual([]);
+  });
+
+  test('should add one Task to the array', () => {
+    //Arrange
+    const mockTasks = [];
+    const expectedTasks = [new Task('test task', false, 1)];
+
+    //Act
+    addNewTask('test task', mockTasks);
+
+    //Assert
+    expect(mockTasks).toEqual(expectedTasks);
+  })
+})
