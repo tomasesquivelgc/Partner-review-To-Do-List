@@ -5,12 +5,10 @@ const deleteAllCompleted = (task) => {
   task.splice(0, task.length, ...filteredArray);
 };
 
-const addNewTask = (newChore, newList) => {
-  const description = newChore.value.trim();
+const addNewTask = (description, newList) => {
       if (description !== '') {
         const task = new Task(description, false, newList.length + 1);
         newList.addTask(task);
-        newChore.value = '';
       }
 }
 

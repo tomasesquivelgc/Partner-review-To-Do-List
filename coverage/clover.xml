@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684530247983" clover="3.2.0">
-  <project timestamp="1684530247983" name="All files">
+<coverage generated="1684533554748" clover="3.2.0">
+  <project timestamp="1684533554748" name="All files">
     <metrics statements="13" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="2" elements="19" coveredelements="7" complexity="0" loc="13" ncloc="13" packages="1" files="2" classes="2"/>
     <file name="Task.js" path="C:\Users\Tomás\Documents\GitHub\Partner-review-To-Do-List\src\Task.js">
       <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>

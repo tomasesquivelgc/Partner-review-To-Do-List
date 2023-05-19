@@ -5,7 +5,9 @@ const eventListeners = (newList) => {
   
   newChore.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-      addNewTask(newChore, newList);
+      const description = newChore.value.trim();
+      addNewTask(description, newList);
+      newChore.value = '';
     }
   });
   
