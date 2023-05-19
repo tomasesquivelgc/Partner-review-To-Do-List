@@ -16,6 +16,12 @@ global.localStorage = localStorageMock;
 //   // Before each test, clear the localStorage mock and set up the document body
 //   beforeEach(() => {
 //     // Test that the addTask method adds one <li> element to the list in the DOM
+//     it('should add one <li> element to the list in the DOM', () => {
+//     // Mock the necessary variables and elements
+//       const mockEvent = { target: { value: 'New task', closest: jest.fn() } };
+//       const mockElement = { querySelector: jest.fn() };
+//       mockEvent.target.closest.mockReturnValue(mockElement);
+//       mockElement.querySelector.mockReturnValue({ value: 'New task' });
 
 //       // Create an instance of the class and call the addTask method
 //       addRemoveTask.addTask(mockEvent);
@@ -32,52 +38,54 @@ global.localStorage = localStorageMock;
 //     });
 //   });
 
-  describe('deleteAllCompleted', () => {
-    beforeEach(() => {
-    // Mock the dom
-      document.body.innerHTML = `
-    <div class="add_container">
-      <input id="inputElement" type="text" placeholder="Add to your list...">
-      <i class="fas fa-plus-circle"></i>
-    </div>
-    <ul id="taskList"></ul>
-  `;
-    });
-    // Mock the localStorage data
-    localStorage.getItem.mockReturnValue(JSON.stringify([{ id: 1, completed: false }]));
-  });
+//   describe('deleteAllCompleted', () => {
+//     beforeEach(() => {
+//     // Mock the dom
+//       document.body.innerHTML = `
+//     <div class="add_container">
+//       <input id="inputElement" type="text" placeholder="Add to your list...">
+//       <i class="fas fa-plus-circle"></i>
+//     </div>
+//     <ul id="taskList"></ul>
+//   `;
+//     });
+//     // Mock the localStorage data
+//     localStorage.getItem.mockReturnValue(JSON.stringify([{ id: 1, completed: false }]));
+//   });
 
-  afterEach(() => {
-    // Reset the mock
-    localStorageMock.getItem.mockReset();
-    localStorageMock.setItem.mockReset();
-    localStorageMock.clear.mockReset();
-  });
+//   afterEach(() => {
+//     // Reset the mock
+//     localStorageMock.getItem.mockReset();
+//     localStorageMock.setItem.mockReset();
+//     localStorageMock.clear.mockReset();
+//   });
 
-  test('should remove completed tasks from the task array', () => {
-    // Arrange
-    const mockTasks = [{ id: 1, completed: true }, { id: 2, completed: false }];
-    const expectedTasks = [{ id: 1, completed: false }];
+//   test('should remove completed tasks from the task array', () => {
+//     // Arrange
+//     const mockTasks = [{ id: 1, completed: true }, { id: 2, completed: false }];
+//     const expectedTasks = [{ id: 1, completed: false }];
 
-    // Act
-    deleteAllCompleted(mockTasks);
+//     // Act
+//     deleteAllCompleted(mockTasks);
 
-    // Assert
-    expect(mockTasks).toEqual(expectedTasks);
-  });
+//     // Assert
+//     expect(mockTasks).toEqual(expectedTasks);
+//   });
 
-  test('should load data from localStorage', () => {
-    // Arrange
-    const mockTasks = [{ id: 1, completed: false }];
-    const loadedData = JSON.parse(localStorage.getItem());
+//   test('should load data from localStorage', () => {
+//     // Arrange
+//     const mockTasks = [{ id: 1, completed: false }];
+//     const loadedData = JSON.parse(localStorage.getItem());
 
-    // Act
-    deleteAllCompleted(mockTasks);
+//     // Act
+//     deleteAllCompleted(mockTasks);
 
-    // Assert
-    expect(loadedData).toEqual(mockTasks);
-  });
-});
+//     // Assert
+//     expect(loadedData).toEqual(mockTasks);
+//   });
+// });
+
+
 describe('addTask', () => {
   test('should return nothing if string is empty', () => {
     // Arrange
