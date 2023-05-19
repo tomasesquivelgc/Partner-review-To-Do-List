@@ -1,4 +1,4 @@
-import { addNewTask } from "./delete-completed-tasks";
+import { addNewTask } from "./addDelete";
 const eventListeners = (newList) => {
   const newChore = document.querySelector('.addChore');
   const deleteButonn = document.querySelector('.clearBtnn');
