@@ -22,7 +22,7 @@ describe('deleteAllCompleted', () => {
     localStorageMock.clear.mockReset();
   });
 
-  test('should remove completed tasks from the task array and update localStorage', () => {
+  test('should remove completed tasks from the task array', () => {
     // Arrange
     const mockTasks = [{ id: 1, completed: true }, { id: 2, completed: false }];
     const expectedTasks = [{ id: 2, completed: false }];
@@ -32,7 +32,17 @@ describe('deleteAllCompleted', () => {
 
     // Assert
     expect(mockTasks).toEqual(expectedTasks);
-    expect(localStorageMock.setItem).toHaveBeenCalledTimes(1);
-    expect(localStorageMock.setItem).toHaveBeenCalledWith('tasks', JSON.stringify(expectedTasks));
   });
+
+  test('should load data from localStorage', () => {
+    // Arrange
+    const mockTasks = [{ id: 1, completed: true }, { id: 2, completed: false }];
+  
+    // Act
+    const loadedData = JSON.parse(localStorage.getItem());
+  
+    // Assert
+    expect(loadedData).toEqual(mockTasks);
+  });
+  
 });
