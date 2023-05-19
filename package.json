@@ -4,10 +4,10 @@
   "description": "this repo is to learn how to install and use webpack",
   "private": true,
   "scripts": {
-    "echo": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "build": "webpack",
-    "test": "jest --coverage"
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
