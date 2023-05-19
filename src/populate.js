@@ -1,4 +1,4 @@
-import deleteAllCompleted from './delete-completed-tasks.js';
+import { deleteAllCompleted } from './delete-completed-tasks.js';
 import createCompleteLi from './liItem.js';
 import { saveData } from './saveData.js';
 
