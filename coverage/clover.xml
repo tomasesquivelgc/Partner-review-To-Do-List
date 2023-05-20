@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684539955718" clover="3.2.0">
-  <project timestamp="1684539955718" name="All files">
-    <metrics statements="11" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="3" elements="17" coveredelements="13" complexity="0" loc="11" ncloc="11" packages="1" files="2" classes="2"/>
-    <file name="Task.js" path="D:\All About Programing\microverse\WithinMicroverse\JavaScript and Networking\Week 3\day 3\Partner-review-To-Do-List\src\Task.js">
-      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <line num="3" count="0" type="stmt"/>
-      <line num="4" count="0" type="stmt"/>
-      <line num="5" count="0" type="stmt"/>
-    </file>
-    <file name="addDelete.js" path="D:\All About Programing\microverse\WithinMicroverse\JavaScript and Networking\Week 3\day 3\Partner-review-To-Do-List\src\addDelete.js">
-      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="2" type="stmt"/>
-      <line num="5" count="2" type="stmt"/>
-      <line num="6" count="2" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-      <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-    </file>
+<coverage generated="1684549593684" clover="3.2.0">
+  <project timestamp="1684549593684" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>

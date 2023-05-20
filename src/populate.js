@@ -30,4 +30,4 @@ class TaskList extends Array {
   }
 }
 
-export default TaskList;
+export {TaskList};
