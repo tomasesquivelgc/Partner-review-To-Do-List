@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { deleteAllCompleted } from './addDelete.js';
 import createCompleteLi from './liItem.js';
 import { saveData } from './saveData.js';
@@ -30,4 +31,4 @@ class TaskList extends Array {
   }
 }
 
-export {TaskList};
+export { TaskList };
