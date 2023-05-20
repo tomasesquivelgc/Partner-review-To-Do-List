@@ -33,7 +33,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 [Webpack minimalist] <a name="about-project"></a>
 
 Webpack minimalist is a Webpack based project that emulates this [minimalist](https://web.archive.org/web/20180320194056/http://www.getminimalist.com:80/)
 
@@ -73,6 +73,10 @@ Webpack minimalist is a Webpack based project that emulates this [minimalist](ht
   - Checkboxes completed status
   - Clear all button
 
+
+### Now testing
+ - Add function testing
+ - remove function testing
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LIVE DEMO -->
