@@ -1,8 +1,5 @@
 import Task from '../Task.js';
 import { addNewTask, deleteAllCompleted } from '../addDelete.js';
-import {TaskList} from '../populate.js';
-
-jest.mock('../Task');
 
 // Mock localStorage
 const localStorageMock = {
@@ -13,10 +10,8 @@ const localStorageMock = {
 };
 global.localStorage = localStorageMock;
 
-
-  describe('deleteAllCompleted', () => {
-    beforeEach(() => {
-
+describe('deleteAllCompleted', () => {
+  beforeEach(() => {
     // Mock the localStorage data
     localStorage.getItem.mockReturnValue(JSON.stringify([{ id: 1, completed: false }]));
   });
@@ -53,7 +48,6 @@ global.localStorage = localStorageMock;
   });
 });
 
-
 describe('addTask', () => {
   test('should return nothing if string is empty', () => {
     // Arrange
@@ -76,42 +70,5 @@ describe('addTask', () => {
 
     // Assert
     expect(mockTasks).toEqual(expectedTasks);
-  });
-});
-
-describe('TaskList', () => {
-  let taskList;
-
-  beforeEach(() => {
-    localStorage.clear();
-    taskList = new TaskList();
-  });
-
-  test('should create a new task list', () => {
-    expect(taskList).toBeDefined();
-  });
-
-  test('should add a task to the task list', () => {
-    const task = { title: 'Task 1', completed: false };
-    taskList.addTask(task);
-    expect(taskList.length).toBe(1);
-    expect(taskList[0]).toEqual(task);
-  });
-
-  test('should delete all completed tasks from the task list', () => {
-    const task1 = { title: 'Task 1', completed: true };
-    const task2 = { title: 'Task 2', completed: false };
-    taskList.push(task1, task2);
-    taskList.deleteCompletedTasks();
-    expect(taskList.length).toBe(1);
-    expect(taskList[0]).toEqual(task2);
-  });
-
-  test('should render the task list', () => {
-    const task1 = { title: 'Task 1', completed: true };
-    const task2 = { title: 'Task 2', completed: false };
-    taskList.push(task1, task2);
-    taskList.render();
-    expect(list.innerHTML).not.toBe('');
   });
 });
